@@ -24,6 +24,7 @@
 - [🔄 Ciclo de Vida del Estado](#-ciclo-de-vida-del-estado-terraform)
 - [🛠️ Decisiones de Arquitectura](#%EF%B8%8F-ficha-técnica-decisiones-de-arquitectura)
 - [📊 Matriz de Costos FinOps](#-matriz-de-costos-nube-limpia)
+- [💰 El Valor de FinOps: ¿Por qué Infracost?](#-el-valor-de-finops-por-qué-infracost)
 - [📖 Runbook Quirúrgico](#-runbook-quirúrgico-lifecycle)
 - [📁 Estructura del Proyecto](#-estructura-del-proyecto)
 - [🚀 Quickstart](#-quickstart)
@@ -122,6 +123,29 @@ sequenceDiagram
 | ![AWS](https://img.shields.io/badge/-AWS-232F3E?logo=amazon-aws&logoColor=white) | DynamoDB | `WCU/RCU` | `$0.00` *(Free Tier)* | 🔴 Destruido |
 | ![Azure](https://img.shields.io/badge/-Azure-0089D6?logo=microsoft-azure&logoColor=white) | Resource Group | `Container` | `$0.00` | 🔴 Destruido |
 | | | **TOTAL** | **`$0.00 USD`** | ✅ **Tabula Rasa** |
+
+---
+
+## 💰 El Valor de FinOps: ¿Por qué Infracost?
+
+En este framework, la arquitectura no se aprueba solo por su viabilidad técnica, sino por su **eficiencia financiera**. La integración de Infracost nos permite implementar un modelo de **Responsabilidad Compartida** entre Desarrollo y Finanzas.
+
+### 📊 Análisis Comparativo de Herramientas
+
+| Característica | Infracost *(Nuestra Elección)* | CloudHealth / Cloudability | Terraform Cloud *(Native)* |
+|:---|:---|:---|:---|
+| **Fase del Ciclo** | **Shift-Left** *(Antes de desplegar)* | Post-Deploy *(Después del gasto)* | Planificación |
+| **Costo** | **Open Source / Gratuito** | Licencia Enterprise `$$$` | Pago por Recurso |
+| **Uso en CLI** | ✅ Nativo e Idempotente | ❌ Solo Dashboard Web | ✅ Limitado a TFC |
+| **Agnóstico** | ✅ AWS, Azure, GCP | ✅ Multi-cloud | ❌ Ecosistema HashiCorp |
+
+### 🧠 Decisiones de Arquitecto (ADR — Architectural Decision Record)
+
+1. **Control Preventivo:** Implementamos Infracost para que el costo de **`$8.39 USD`** detectado fuera validado contra las cuotas del **AWS Free Tier (750h/mes)**, garantizando un impacto final de **`$0.00 USD`**.
+2. **Auditoría Transparente:** Al ser Open Source, cualquier auditor puede verificar la lógica de precios sin depender de dashboards propietarios.
+3. **Escalabilidad:** Esta misma lógica se puede integrar en un Pipeline de **GitHub Actions** para bloquear *Pull Requests* que excedan el presupuesto corporativo.
+
+> *"Un Arquitecto que no domina sus costos está diseñando a ciegas. Infracost es nuestra brújula financiera en la niebla de la nube."*
 
 ---
 
@@ -231,7 +255,7 @@ az login
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/tu-usuario/cloud-agnostic-finops.git
+git clone https://github.com/jgaragorry/cloud-agnostic-finops.git
 cd cloud-agnostic-finops
 
 # 2. Provisionar backend remoto (S3 + DynamoDB)
@@ -257,9 +281,9 @@ terraform apply "finops.tfplan"
 
 > *Si buscas escalar infraestructuras con **visibilidad total** y **gobernanza de clase mundial**, hablemos.*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tu_Nombre-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/tu-usuario)
-[![GitHub](https://img.shields.io/badge/GitHub-Portfolio-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tu-usuario)
-[![TikTok](https://img.shields.io/badge/TikTok-Cloud_Content-000000?style=for-the-badge&logo=tiktok&logoColor=white)](https://tiktok.com/@tu-usuario)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-jgaragorry-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jgaragorry)
+[![GitHub](https://img.shields.io/badge/GitHub-jgaragorry-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jgaragorry/)
+[![TikTok](https://img.shields.io/badge/TikTok-@softtraincorp-000000?style=for-the-badge&logo=tiktok&logoColor=white)](https://www.tiktok.com/@softtraincorp)
 
 </div>
 
